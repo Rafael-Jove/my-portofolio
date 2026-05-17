@@ -2,10 +2,6 @@ import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import projects from "../../data/projects.json";
 
-/*
-  projects.json — tambah field "color" tiap item:
-  "slate" | "indigo" | "blue" | "violet" | "teal" | "rose"
-*/
 
 const FILTERS = ["All", "React", "Vue", "TypeScript", "Firebase"];
 
@@ -88,7 +84,6 @@ const ExternalIcon = () => (
 
 const Brackets = ({ color, hovered }) => (
     <>
-        {/* Top-left — expands outward on hover */}
         <motion.span
             animate={hovered ? { width: 20, height: 20 } : { width: 14, height: 14 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -151,7 +146,6 @@ const BorderPulse = ({ accent }) => (
     />
 );
 
-/* Particle that shoots out from card on hover-enter */
 const Particle = ({ accent, index, active }) => {
     const angle = (index / 6) * Math.PI * 2;
     const dist = 60 + Math.random() * 30;
@@ -180,7 +174,6 @@ const Particle = ({ accent, index, active }) => {
     );
 };
 
-/* ── Project Card with 3D tilt ── */
 const ProjectCard = ({ project, index }) => {
     const ref = useRef(null);
     const cardRef = useRef(null);
@@ -192,14 +185,12 @@ const ProjectCard = ({ project, index }) => {
     const idleDelay = (index * 0.9) % 5;
     const floatDelay = (index * 1.3) % 4;
 
-    // 3D tilt via mouse position
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
     const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 200, damping: 20 });
     const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), { stiffness: 200, damping: 20 });
 
-    // Spotlight that follows cursor inside card
     const spotX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), { stiffness: 150, damping: 20 });
     const spotY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), { stiffness: 150, damping: 20 });
 
@@ -250,7 +241,6 @@ const ProjectCard = ({ project, index }) => {
                 className={`relative rounded-2xl border bg-white/[0.03] p-5 flex flex-col gap-3 overflow-hidden cursor-default transition-colors duration-300 ${c.border} ${c.hBorder}`}
                 style={{ backdropFilter: "blur(10px)" }}
             >
-                {/* ── IDLE ANIMATIONS ── */}
                 <motion.div
                     className="absolute -top-16 -left-16 w-56 h-56 rounded-full blur-3xl pointer-events-none"
                     style={{ background: c.glow }}
@@ -266,7 +256,6 @@ const ProjectCard = ({ project, index }) => {
                 <IdleShimmer accent={c.accent} delay={idleDelay} />
                 <BorderPulse accent={c.accent} />
 
-                {/* ── HOVER SPOTLIGHT — follows cursor ── */}
                 <motion.div
                     className="absolute inset-0 pointer-events-none rounded-2xl"
                     animate={{ opacity: hovered ? 1 : 0 }}
@@ -280,7 +269,6 @@ const ProjectCard = ({ project, index }) => {
                     }}
                 />
 
-                {/* ── HOVER GLOW (replaces idle when hovered) ── */}
                 <motion.div
                     className="absolute -top-16 -left-16 w-64 h-64 rounded-full blur-3xl pointer-events-none"
                     style={{ background: c.glow.replace("0.18", "0.35") }}
@@ -288,18 +276,15 @@ const ProjectCard = ({ project, index }) => {
                     transition={{ duration: 0.5 }}
                 />
 
-                {/* ── PARTICLES — burst on hover-enter ── */}
                 {[...Array(6)].map((_, i) => (
                     <Particle key={`${particleKey}-${i}`} accent={c.accent} index={i} active={hovered} />
                 ))}
 
-                {/* ── Corner brackets that expand on hover ── */}
                 <Brackets
                     color={hovered ? c.accent + "dd" : c.accent + "44"}
                     hovered={hovered}
                 />
 
-                {/* Top shimmer line — brightens on hover */}
                 <motion.div
                     className="absolute top-0 left-0 right-0 h-px pointer-events-none"
                     animate={{
@@ -311,7 +296,6 @@ const ProjectCard = ({ project, index }) => {
                     style={{ background: `linear-gradient(90deg, transparent, ${c.accent}88, transparent)` }}
                 />
 
-                {/* Featured badge */}
                 {project.featured && (
                     <motion.div
                         animate={hovered ? { opacity: 1, scale: 1.05 } : { opacity: 0.8, scale: 1 }}
@@ -322,7 +306,6 @@ const ProjectCard = ({ project, index }) => {
                     </motion.div>
                 )}
 
-                {/* Title */}
                 <div className={project.featured ? "pr-20" : ""}>
                     <div className="flex items-center gap-2 mb-0.5">
                         <motion.span
@@ -337,7 +320,6 @@ const ProjectCard = ({ project, index }) => {
                             className="w-1.5 h-1.5 rounded-full shrink-0"
                             style={{ background: c.accent }}
                         />
-                        {/* Title slides up slightly on hover */}
                         <motion.h3
                             animate={{ y: hovered ? -1 : 0 }}
                             transition={{ duration: 0.25 }}
@@ -349,7 +331,6 @@ const ProjectCard = ({ project, index }) => {
                     <span className="text-[11px] text-white/25 pl-3.5 block">{project.year}</span>
                 </div>
 
-                {/* Description — brightens on hover */}
                 <motion.p
                     animate={{ opacity: hovered ? 0.8 : 0.6 }}
                     transition={{ duration: 0.25 }}
@@ -358,7 +339,6 @@ const ProjectCard = ({ project, index }) => {
                     {project.description}
                 </motion.p>
 
-                {/* Tags — stagger scale on hover */}
                 <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag, ti) => (
                         <motion.span
@@ -374,7 +354,6 @@ const ProjectCard = ({ project, index }) => {
                     ))}
                 </div>
 
-                {/* Footer — slide up on hover */}
                 <motion.div
                     animate={{ y: hovered ? -1 : 0, opacity: hovered ? 1 : 0.7 }}
                     transition={{ duration: 0.25 }}
@@ -409,7 +388,6 @@ const ProjectCard = ({ project, index }) => {
     );
 };
 
-/* ── Section ── */
 export const Projects = () => {
     const [activeFilter, setActiveFilter] = useState("All");
     const headerRef = useRef(null);
@@ -420,9 +398,8 @@ export const Projects = () => {
         : projects.filter(p => p.tags.includes(activeFilter));
 
     return (
-        <section className="relative min-h-screen bg-black text-white py-24 px-6 overflow-hidden">
+        <section id="projects" className="relative min-h-screen bg-black text-white py-24 px-6 overflow-hidden">
 
-            {/* Grid */}
             <div
                 className="absolute inset-0 opacity-[0.03] pointer-events-none"
                 style={{
@@ -434,13 +411,11 @@ export const Projects = () => {
                 }}
             />
 
-            {/* Section floating orbs */}
             <FloatingOrb color="rgba(139,92,246,0.07)" size={500} x="5%" y="10%" duration={14} delay={0} />
             <FloatingOrb color="rgba(59,130,246,0.06)" size={400} x="60%" y="50%" duration={18} delay={3} />
             <FloatingOrb color="rgba(20,184,166,0.05)" size={320} x="80%" y="5%" duration={12} delay={6} />
             <FloatingOrb color="rgba(244,63,94,0.04)" size={280} x="30%" y="70%" duration={16} delay={2} />
 
-            {/* Dual radial glow */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_20%,_rgba(139,92,246,0.10)_0%,_transparent_55%)]" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_80%,_rgba(59,130,246,0.07)_0%,_transparent_50%)]" />
@@ -448,7 +423,6 @@ export const Projects = () => {
 
             <div className="max-w-6xl mx-auto relative z-10">
 
-                {/* Header */}
                 <div ref={headerRef} className="mb-12">
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
@@ -480,7 +454,6 @@ export const Projects = () => {
                     </motion.p>
                 </div>
 
-                {/* Filters */}
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -509,7 +482,6 @@ export const Projects = () => {
                     </span>
                 </motion.div>
 
-                {/* Cards */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activeFilter}

@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import GlassSurface from '../component/GlassSurface/GlassSurface';
 
-const NAV_LINKS = ["Home", "About", "Projects", "Contact"];
+const NAV_LINKS = ["home", "projects", "skills", "contact"];
 
 const Navbar = () => {
-    const [active, setActive] = useState("Home");
+    const [active, setActive] = useState("home");
     const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 });
     const [glowPos, setGlowPos] = useState({ x: 0, y: 0, visible: false });
     const [hideNavbar, setHideNavbar] = useState(true);
@@ -21,12 +21,23 @@ const Navbar = () => {
 
     useEffect(() => {
         const hero = document.getElementById("hero");
-        if (!hero) return;
+
+        if (!hero) {
+            setHideNavbar(false);
+            return;
+        }
+
         const observer = new IntersectionObserver(
-            ([entry]) => setHideNavbar(entry.isIntersecting),
-            { threshold: 0.4 }
+            ([entry]) => {
+                setHideNavbar(entry.isIntersecting);
+            },
+            {
+                rootMargin: "-80px 0px 0px 0px",
+            }
         );
+
         observer.observe(hero);
+
         return () => observer.disconnect();
     }, []);
 
@@ -50,26 +61,63 @@ const Navbar = () => {
         return () => cancelAnimationFrame(rafRef.current);
     }, []);
 
+    useEffect(() => {
+        const sections = document.querySelectorAll("section[id]");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            },
+            {
+                threshold: 0.6,
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        return () => observer.disconnect();
+    }, []);
+
     const handleNavMouseMove = (e) => {
         const glassEl = navbarWrapRef.current?.querySelector(':first-child');
         const navRect = glassEl?.getBoundingClientRect();
         if (!navRect) return;
-        if (e.clientX < navRect.left || e.clientX > navRect.right || e.clientY < navRect.top || e.clientY > navRect.bottom) {
+
+        if (
+            e.clientX < navRect.left ||
+            e.clientX > navRect.right ||
+            e.clientY < navRect.top ||
+            e.clientY > navRect.bottom
+        ) {
             handleNavMouseLeave();
             return;
         }
-        glowTarget.current = { x: e.clientX - navRect.left, y: e.clientY - navRect.top };
+
+        glowTarget.current = {
+            x: e.clientX - navRect.left,
+            y: e.clientY - navRect.top
+        };
+
         setGlowPos(prev => ({ ...prev, visible: true }));
+
         Object.values(itemRefs.current).forEach(el => {
             if (!el) return;
+
             const r = el.getBoundingClientRect();
             const cx = r.left + r.width / 2;
             const cy = r.top + r.height / 2;
+
             const dx = e.clientX - cx;
             const dy = e.clientY - cy;
+
             const dist = Math.sqrt(dx * dx + dy * dy);
             const btn = el.querySelector('button');
             if (!btn) return;
+
             if (dist < MAGNET_RADIUS) {
                 const pull = 1 - dist / MAGNET_RADIUS;
                 btn.style.transform = `translate(${dx * pull * MAGNET_STRENGTH}px, ${dy * pull * MAGNET_STRENGTH}px)`;
@@ -81,6 +129,7 @@ const Navbar = () => {
 
     const handleNavMouseLeave = () => {
         setGlowPos(prev => ({ ...prev, visible: false }));
+
         Object.values(itemRefs.current).forEach(el => {
             const btn = el?.querySelector('button');
             if (btn) btn.style.transform = '';
@@ -100,7 +149,6 @@ const Navbar = () => {
         >
             <div className="w-[34%] h-[52px] rounded-full relative shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_20px_rgba(139,92,246,0.2),0_4px_24px_rgba(0,0,0,0.6)]">
 
-                {/* Purple top accent line */}
                 <div className="absolute top-0 left-[20%] right-[20%] h-px rounded-full z-20 pointer-events-none bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
 
                 <div className="w-full h-full rounded-full overflow-hidden relative">
@@ -118,7 +166,6 @@ const Navbar = () => {
                         saturation={1.6}
                         backgroundOpacity={0.12}
                     >
-                        {/* Mouse glow */}
                         <div
                             className="absolute pointer-events-none z-10 rounded-full w-24 h-24 mix-blend-screen transition-opacity duration-300"
                             style={{
@@ -130,23 +177,27 @@ const Navbar = () => {
                             }}
                         />
 
-                        {/* Inner border */}
                         <div className="absolute inset-0 rounded-full pointer-events-none z-10 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]" />
 
                         <div className="w-full h-full flex items-center justify-between px-6 relative">
 
-                            {/* Logo */}
                             <h1
-                                onClick={() => setActive("Home")}
+                                onClick={() => {
+                                    const section = document.getElementById("hero");
+                                    if (section) {
+                                        section.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start",
+                                        });
+                                    }
+                                }}
                                 className="font-bold cursor-pointer m-0 text-sm tracking-wide text-white"
                             >
                                 Rafael<span className="text-purple-400">.</span>
                             </h1>
 
-                            {/* Nav links */}
                             <ul ref={ulRef} className="flex list-none m-0 p-1 relative">
 
-                                {/* Active pill */}
                                 <div
                                     className="absolute top-1/2 -translate-y-1/2 h-7 rounded-full pointer-events-none z-0 border border-purple-500/30 bg-purple-500/20 shadow-[inset_0_1px_0_rgba(168,85,247,0.3),0_0_12px_rgba(168,85,247,0.15)]"
                                     style={{
@@ -162,18 +213,26 @@ const Navbar = () => {
                                     return (
                                         <li key={name} ref={el => itemRefs.current[name] = el}>
                                             <button
-                                                onClick={() => setActive(name)}
+                                                onClick={() => {
+                                                    const section = document.getElementById(name);
+                                                    if (section) {
+                                                        section.scrollIntoView({
+                                                            behavior: "smooth",
+                                                            block: "start",
+                                                        });
+                                                    }
+                                                }}
                                                 className={`
-    flex items-center px-3.5 py-1.5 rounded-full border-none bg-transparent
-    cursor-pointer text-[13px] whitespace-nowrap relative z-10
-    transition-colors duration-200
-    ${isActive
+                                                    flex items-center px-3.5 py-1.5 rounded-full border-none bg-transparent
+                                                    cursor-pointer text-[13px] whitespace-nowrap relative z-10
+                                                    transition-colors duration-200
+                                                    ${isActive
                                                         ? "font-semibold text-white [text-shadow:0_0_12px_rgba(168,85,247,0.6)]"
                                                         : "font-normal text-white hover:text-white"
                                                     }
-`}
+                                                `}
                                             >
-                                                {name}
+                                                {name.charAt(0).toUpperCase() + name.slice(1)}
                                             </button>
                                         </li>
                                     );

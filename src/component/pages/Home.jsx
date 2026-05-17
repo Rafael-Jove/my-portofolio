@@ -4,9 +4,8 @@ import profile from "../../assets/profile.jpg";
 
 const Home = () => {
     return (
-        <section className="relative h-screen bg-black text-white flex items-center justify-center px-6 overflow-hidden">
+        <section id="home" className="relative h-screen bg-black text-white flex items-center justify-center px-6 overflow-hidden">
 
-            {/* Background grid */}
             <div
                 className="absolute inset-0 opacity-[0.03]"
                 style={{
@@ -18,10 +17,8 @@ const Home = () => {
                 }}
             />
 
-            {/* Radial glow */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,_rgba(139,92,246,0.12)_0%,_transparent_60%)]" />
 
-            {/* About Me label */}
             <div className="absolute top-8 w-full flex justify-center">
                 <ScrollReveal direction="up" className="flex items-center gap-4 w-[320px]">
                     <div className="flex-1 h-px bg-white/10" />
@@ -32,10 +29,8 @@ const Home = () => {
                 </ScrollReveal>
             </div>
 
-            {/* Main content */}
             <div className="flex gap-8 items-center max-w-6xl w-full z-10">
 
-                {/* LEFT */}
                 <div className="flex-1 space-y-3">
                     <ScrollReveal direction="left" className="text-purple-400 text-7xl md:text-8xl font-bold leading-none">
                         Hi,
@@ -55,10 +50,8 @@ const Home = () => {
                         Informatics student at ISTTS with an interest in software development and digital product creation. Passionate about learning new technologies, improving problem-solving skills, and understanding how real-world applications are built. Currently seeking internship opportunities to gain practical experience, develop professionally, and contribute in a collaborative environment.
                     </ScrollReveal>
 
-                    {/* Social + CV */}
                     <ScrollReveal direction="up" delay={400} className="flex items-center gap-4 pt-3">
 
-                        {/* Instagram */}
                         <motion.a
                             href="https://instagram.com/username"
                             target="_blank"
@@ -75,7 +68,6 @@ const Home = () => {
                             </svg>
                         </motion.a>
 
-                        {/* GitHub */}
                         <motion.a
                             href="https://github.com/username"
                             target="_blank"
@@ -90,10 +82,8 @@ const Home = () => {
                             </svg>
                         </motion.a>
 
-                        {/* Divider */}
                         <div className="w-px h-6 bg-white/10" />
 
-                        {/* Download CV */}
                         <motion.a
                             href="/cv.pdf"
                             download
@@ -114,7 +104,6 @@ const Home = () => {
                     </ScrollReveal>
                 </div>
 
-                {/* RIGHT — Profile Image */}
                 <div className="shrink-0">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.85, y: 30 }}

@@ -5,7 +5,6 @@ const HeroPage = () => {
     return (
         <section id="hero" className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-center">
 
-            {/* Plasma background */}
             <div className="absolute inset-0 z-0 bg-black">
                 <Plasma
                     color="#A855F7"
@@ -16,13 +15,10 @@ const HeroPage = () => {
                 />
             </div>
 
-            {/* Subtle vignette */}
             <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_center,_transparent_40%,_rgba(0,0,0,0.6)_100%)]" />
 
-            {/* Content */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center px-6">
 
-                {/* Label */}
                 <motion.div
                     initial={{ opacity: 0, y: -12 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -31,7 +27,6 @@ const HeroPage = () => {
                 >
                 </motion.div>
 
-                {/* Name */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -50,7 +45,6 @@ const HeroPage = () => {
                     Wicaksono
                 </motion.h1>
 
-                {/* Subtitle */}
                 <motion.p
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -60,14 +54,12 @@ const HeroPage = () => {
                     Informatics student at ISTTS — passionate about software development and building meaningful digital products.
                 </motion.p>
 
-                {/* Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
                     className="flex gap-3 mt-8"
                 >
-                    {/* Primary */}
                     <motion.a
                         href="#projects"
                         whileHover={{ scale: 1.05, y: -2 }}
@@ -78,7 +70,6 @@ const HeroPage = () => {
                         My Projects
                     </motion.a>
 
-                    {/* Secondary */}
                     <motion.a
                         href="#contact"
                         whileHover={{ scale: 1.05, y: -2 }}
@@ -91,7 +82,6 @@ const HeroPage = () => {
 
             </div>
 
-            {/* Scroll indicator */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 z-10">
                 <span className="text-[10px] tracking-widest text-gray-600 uppercase">Scroll</span>
                 <motion.div
