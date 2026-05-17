@@ -1,0 +1,52 @@
+/* Liquid glass navbar styles */
+.liquid-nav {
+    position: relative;
+    border-radius: 999px;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(16, 24, 40, 0.18);
+}
+
+.liquid-nav::before {
+    content: "";
+    position: absolute;
+    inset: -30% -10% auto -10%;
+    height: 160%;
+    background: radial-gradient(400px 200px at 10% 20%, rgba(255, 255, 255, 0.06), transparent 20%),
+        radial-gradient(300px 150px at 80% 80%, rgba(255, 255, 255, 0.04), transparent 20%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    transform-origin: center;
+    animation: swirl 10s linear infinite;
+}
+
+.liquid-nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.00));
+    pointer-events: none;
+}
+
+@keyframes swirl {
+    0% {
+        transform: translateX(-8%) rotate(0deg);
+    }
+
+    50% {
+        transform: translateX(8%) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(-8%) rotate(360deg);
+    }
+}
+
+/* Ensure links are visible on darker backgrounds */
+.liquid-nav .text-white a,
+.liquid-nav .text-white li {
+    color: #ffffff;
+}
