@@ -2,87 +2,45 @@
     {
         "id": 1,
         "title": "E-Commerce Platform",
-        "description": "Full-stack e-commerce app with cart, payment gateway, and admin dashboard. Built with React and Node.js.",
+        "description": "Full-stack e-commerce app with cart, product display, login, register, and admin dashboard. Built with React and Node.js.",
         "tags": [
             "React",
             "Node.js",
-            "MongoDB",
+            "Firebase",
             "Tailwind"
         ],
-        "year": "2024",
-        "link": "https://github.com/",
-        "live": "https://example.com",
+        "year": "2025",
+        "link": "https://github.com/rsl23/Project-SDP",
+        "live": "https://storied-courier-479504-q5.et.r.appspot.com/",
         "featured": true
     },
     {
         "id": 2,
-        "title": "AI Chat Interface",
-        "description": "Real-time chat UI powered by OpenAI API with conversation history and markdown rendering.",
+        "title": "Blockchain Coin API Service",
+        "description": "RESTful API service for retrieving real-time cryptocurrency data including prices, market trends, order information.",
         "tags": [
-            "React",
-            "OpenAI",
-            "TypeScript",
-            "Zustand"
+            "Node.js",
+            "Express",
+            "REST API",
+            "MySql"
         ],
         "year": "2024",
-        "link": "https://github.com/",
-        "live": null,
+        "link": "https://github.com/KevinCS0609/ProyekWS",
         "featured": true
     },
     {
         "id": 3,
-        "title": "Task Management App",
-        "description": "Kanban-style task manager with drag & drop, labels, and team collaboration features.",
+        "title": "Online Bookstore Platform",
+        "description": "Full-stack web application for an online bookstore featuring product catalog, shopping cart, order management, and user authentication. Built with Laravel and MySQL, with an admin dashboard for managing books, categories, and transactions.",
         "tags": [
-            "Vue",
-            "Firebase",
-            "Pinia"
+            "Laravel",
+            "PHP",
+            "MySQL",
+            "Blade",
+            "Bootstrap"
         ],
-        "year": "2023",
-        "link": "https://github.com/",
-        "live": "https://example.com",
-        "featured": false
-    },
-    {
-        "id": 4,
-        "title": "Weather Dashboard",
-        "description": "Beautiful weather app with 7-day forecast, location search, and animated weather icons.",
-        "tags": [
-            "React",
-            "REST API",
-            "Chart.js"
-        ],
-        "year": "2023",
-        "link": "https://github.com/",
-        "live": "https://example.com",
-        "featured": false
-    },
-    {
-        "id": 5,
-        "title": "Portfolio v1",
-        "description": "First iteration of my personal portfolio built with vanilla HTML, CSS, and JavaScript.",
-        "tags": [
-            "HTML",
-            "CSS",
-            "JavaScript"
-        ],
-        "year": "2023",
-        "link": "https://github.com/",
-        "live": null,
-        "featured": false
-    },
-    {
-        "id": 6,
-        "title": "Inventory System",
-        "description": "Desktop-like inventory management system with barcode scanning and PDF export.",
-        "tags": [
-            "React",
-            "Electron",
-            "SQLite"
-        ],
-        "year": "2024",
-        "link": "https://github.com/",
-        "live": null,
-        "featured": false
+        "year": "2025",
+        "link": "https://github.com/ellexcia/BWP",
+        "featured": true
     }
 ]

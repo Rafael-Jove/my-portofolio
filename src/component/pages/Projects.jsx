@@ -3,7 +3,7 @@ import { motion, useInView, AnimatePresence, useMotionValue, useSpring, useTrans
 import projects from "../../data/projects.json";
 
 
-const FILTERS = ["All", "React", "Vue", "TypeScript", "Firebase"];
+const FILTERS = ["All", "React", "Laravel", "Firebase", "MySQL", "Tailwind", "PHP"];
 
 const COLORS = {
     slate: {
@@ -238,7 +238,7 @@ const ProjectCard = ({ project, index }) => {
                         : `0 2px 8px rgba(0,0,0,0.3)`,
                 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className={`relative rounded-2xl border bg-white/[0.03] p-5 flex flex-col gap-3 overflow-hidden cursor-default transition-colors duration-300 ${c.border} ${c.hBorder}`}
+                className={`relative rounded-2xl border bg-white/[0.03] p-5 flex flex-col gap-3 overflow-hidden cursor-default transition-colors duration-300 ${c.border} ${c.hBorder} h-full`}
                 style={{ backdropFilter: "blur(10px)" }}
             >
                 <motion.div

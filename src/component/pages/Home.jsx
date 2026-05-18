@@ -53,7 +53,7 @@ const Home = () => {
                     <ScrollReveal direction="up" delay={400} className="flex items-center gap-4 pt-3">
 
                         <motion.a
-                            href="https://instagram.com/username"
+                            href="https://www.instagram.com/vnt.el?igsh=MWc3djNpN3QzNWx1dg%3D%3D&utm_source=qr"
                             target="_blank"
                             rel="noreferrer"
                             aria-label="Instagram"
@@ -69,7 +69,7 @@ const Home = () => {
                         </motion.a>
 
                         <motion.a
-                            href="https://github.com/username"
+                            href="https://github.com/ellexcia"
                             target="_blank"
                             rel="noreferrer"
                             aria-label="GitHub"

@@ -61,7 +61,15 @@ const HeroPage = () => {
                     className="flex gap-3 mt-8"
                 >
                     <motion.a
-                        href="#projects"
+                        onClick={() => {
+                            const section = document.getElementById("projects");
+                            if (section) {
+                                section.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                });
+                            }
+                        }}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.97 }}
                         className="relative px-6 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors overflow-hidden group"
@@ -71,7 +79,15 @@ const HeroPage = () => {
                     </motion.a>
 
                     <motion.a
-                        href="#contact"
+                        onClick={() => {
+                            const section = document.getElementById("contact");
+                            if (section) {
+                                section.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                });
+                            }
+                        }}
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.97 }}
                         className="px-6 py-2.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/30 text-white text-sm font-medium transition-colors backdrop-blur-sm"
