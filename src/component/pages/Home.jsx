@@ -85,7 +85,7 @@ const Home = () => {
                         <div className="w-px h-6 bg-white/10" />
 
                         <motion.a
-                            href="/cv.pdf"
+                            href="/my-portofolio/cv.pdf"
                             download
                             whileHover={{ scale: 1.03, y: -2 }}
                             whileTap={{ scale: 0.97 }}
