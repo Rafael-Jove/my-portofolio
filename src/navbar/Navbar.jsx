@@ -111,7 +111,7 @@ const Navbar = () => {
             onMouseMove={handleNavMouseMove}
             onMouseLeave={handleNavMouseLeave}
         >
-            <div className="w-[90%] md:w-[34%] max-w-[520px] h-[52px] rounded-full relative shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_20px_rgba(139,92,246,0.2),0_4px_24px_rgba(0,0,0,0.6)]">
+            <div className="w-[90%] lg:w-[34%] max-w-[520px] h-[52px] rounded-full relative shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_20px_rgba(139,92,246,0.2),0_4px_24px_rgba(0,0,0,0.6)]">
                 <div className="absolute top-0 left-[20%] right-[20%] h-px rounded-full z-20 pointer-events-none bg-gradient-to-r from-transparent via-purple-400/60 to-transparent" />
                 <div className="w-full h-full rounded-full overflow-hidden relative">
                     <GlassSurface
@@ -145,12 +145,12 @@ const Navbar = () => {
                                     const section = document.getElementById("hero");
                                     if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
                                 }}
-                                className="font-bold cursor-pointer m-0 text-base md:text-sm tracking-wide text-white"
+                                className="font-bold cursor-pointer m-0 text-base lg:text-sm tracking-wide text-white"
                             >
                                 Rafael<span className="text-purple-400">.</span>
                             </h1>
 
-                            <ul ref={ulRef} className="hidden md:flex list-none m-0 p-1 relative">
+                            <ul ref={ulRef} className="hidden lg:flex list-none m-0 p-1 relative">
                                 <div
                                     className="absolute top-1/2 -translate-y-1/2 h-7 rounded-full pointer-events-none z-0 border border-purple-500/30 bg-purple-500/20 shadow-[inset_0_1px_0_rgba(168,85,247,0.3),0_0_12px_rgba(168,85,247,0.15)]"
                                     style={{
@@ -169,7 +169,7 @@ const Navbar = () => {
                                                     const section = document.getElementById(name);
                                                     if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
                                                 }}
-                                                className={`flex items-center px-3.5 py-1.5 rounded-full border-none bg-transparent cursor-pointer text-base md:text-[13px] whitespace-nowrap relative z-10 transition-colors duration-200 ${isActive ? "font-semibold text-white [text-shadow:0_0_12px_rgba(168,85,247,0.6)]" : "font-normal text-white hover:text-white"}`}
+                                                className={`flex items-center px-3.5 py-1.5 rounded-full border-none bg-transparent cursor-pointer text-base lg:text-[13px] whitespace-nowrap relative z-10 transition-colors duration-200 ${isActive ? "font-semibold text-white [text-shadow:0_0_12px_rgba(168,85,247,0.6)]" : "font-normal text-white hover:text-white"}`}
                                             >
                                                 {name.charAt(0).toUpperCase() + name.slice(1)}
                                             </button>
@@ -180,7 +180,7 @@ const Navbar = () => {
 
                             <button
                                 onClick={() => setMenuOpen(prev => !prev)}
-                                className="md:hidden flex flex-col justify-center items-center gap-1 w-8 h-8 bg-transparent border-none cursor-pointer z-10"
+                                className="lg:hidden flex flex-col justify-center items-center gap-1 w-8 h-8 bg-transparent border-none cursor-pointer z-10"
                             >
                                 <span className={`block w-5 h-px bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
                                 <span className={`block w-5 h-px bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
@@ -193,7 +193,7 @@ const Navbar = () => {
 
             {menuOpen && (
                 <div
-                    className="md:hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] max-w-[520px] rounded-2xl border border-white/10 overflow-hidden"
+                    className="lg:hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] max-w-[520px] rounded-2xl border border-white/10 overflow-hidden"
                     style={{
                         background: "linear-gradient(135deg, rgba(20,10,40,0.95) 0%, rgba(10,5,25,0.98) 100%)",
                         backdropFilter: "blur(20px)",
@@ -217,7 +217,7 @@ const Navbar = () => {
                                 style={{
                                     animation: `slideIn 0.3s cubic-bezier(0.34,1.56,0.64,1) ${i * 60}ms both`,
                                 }}
-                                className={`w-full px-6 py-4 text-left text-base md:text-sm border-none bg-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group ${isActive ? "text-purple-400 font-semibold" : "text-white/60 hover:text-white"} ${i < NAV_LINKS.length - 1 ? "border-b border-white/5" : ""}`}
+                                className={`w-full px-6 py-4 text-left text-base lg:text-sm border-none bg-transparent cursor-pointer transition-all duration-200 flex items-center justify-between group ${isActive ? "text-purple-400 font-semibold" : "text-white/60 hover:text-white"} ${i < NAV_LINKS.length - 1 ? "border-b border-white/5" : ""}`}
                             >
                                 <span className="flex items-center gap-3">
                                     <span
