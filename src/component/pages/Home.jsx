@@ -4,7 +4,7 @@ import profile from "../../assets/profile.jpg";
 
 const Home = () => {
     return (
-        <section id="home" className="relative h-screen bg-black text-white flex items-center justify-center px-6 overflow-hidden">
+        <section id="home" className="relative min-h-screen bg-black text-white flex items-center justify-center px-6 overflow-hidden py-20">
 
             <div
                 className="absolute inset-0 opacity-[0.03]"
@@ -29,28 +29,28 @@ const Home = () => {
                 </ScrollReveal>
             </div>
 
-            <div className="flex gap-8 items-center max-w-6xl w-full z-10">
+            <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center max-w-6xl w-full z-10">
 
-                <div className="flex-1 space-y-3">
-                    <ScrollReveal direction="left" className="text-purple-400 text-7xl md:text-8xl font-bold leading-none">
+                <div className="flex-1 space-y-3 text-center md:text-left">
+                    <ScrollReveal direction="left" className="text-purple-400 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
                         Hi,
                     </ScrollReveal>
-                    <ScrollReveal direction="right" delay={100} className="text-7xl md:text-8xl font-bold leading-none">
+                    <ScrollReveal direction="right" delay={100} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
                         I'm Rafael
                     </ScrollReveal>
-                    <ScrollReveal direction="right" delay={150} className="text-7xl md:text-8xl font-bold leading-none">
+                    <ScrollReveal direction="right" delay={150} className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-none">
                         Jove Wicaksono
                     </ScrollReveal>
 
                     <ScrollReveal
                         direction="down"
                         delay={300}
-                        className="text-sm text-gray-400 text-justify leading-relaxed max-w-lg pt-2"
+                        className="text-sm text-gray-400 text-justify leading-relaxed max-w-lg pt-2 mx-auto md:mx-0"
                     >
                         Informatics student at ISTTS with an interest in software development and digital product creation. Passionate about learning new technologies, improving problem-solving skills, and understanding how real-world applications are built. Currently seeking internship opportunities to gain practical experience, develop professionally, and contribute in a collaborative environment.
                     </ScrollReveal>
 
-                    <ScrollReveal direction="up" delay={400} className="flex items-center gap-4 pt-3">
+                    <ScrollReveal direction="up" delay={400} className="flex items-center gap-4 pt-3 justify-center md:justify-start">
 
                         <motion.a
                             href="https://www.instagram.com/vnt.el?igsh=MWc3djNpN3QzNWx1dg%3D%3D&utm_source=qr"
@@ -91,7 +91,6 @@ const Home = () => {
                             whileTap={{ scale: 0.97 }}
                             className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium transition-colors relative overflow-hidden group"
                         >
-                            {/* shimmer on hover */}
                             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
@@ -111,7 +110,7 @@ const Home = () => {
                         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
                         viewport={{ once: true }}
                         className="relative"
-                        style={{ width: 340, height: 480 }}
+                        style={{ width: "min(280px, 75vw)", height: "min(400px, 105vw)" }}
                     >
                         <motion.div
                             animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
