@@ -16,7 +16,7 @@
     },
     {
         "id": 2,
-        "title": "Blockchain Coin API Service",
+        "title": "Cryptocurrency Coin API Service",
         "description": "RESTful API service for retrieving real-time cryptocurrency data including prices, market trends, order information.",
         "tags": [
             "Node.js",
@@ -36,8 +36,7 @@
             "Laravel",
             "PHP",
             "MySQL",
-            "Blade",
-            "Bootstrap"
+            "Blade"
         ],
         "year": "2025",
         "link": "https://github.com/ellexcia/BWP",
